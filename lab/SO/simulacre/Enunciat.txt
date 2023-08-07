@@ -1,0 +1,15 @@
+    Implementa los siguientes programas ("prog1", "prog2", y "micat") donde el resultado final será la contabilización del número de caracteres que tienen los ficheros que se introducen como parámetros de entrada.
+
+    El primero, "prog1", acepta un número variable de parámetros de entrada (1..N), que serán nombres de ficheros. Por un lado, el proceso principal creará tantos procesos hijo, concurrentes, como parámetros de entrada, más uno. (NOTA: la primera versión es concurrentes...pero para aquellos que acaben antes de tiempo y quieran una versión más avanzada, que hagan la versión 2.0 donde los hijos se crean y ejecutan de forma secuencial). 
+
+    El padre creará (1..N) procesos hijo para mutar y ejecutar "cat" del fichero i-ésimo correspondiente. Todos ellos escribirán a una misma pipe sin nombre. Además, el proceso principal creará otro proceso hijo, el N+1, que mutará para ejecutar "./micat". Este programa, "micat", lo has de implementar. De tal forma que lee por el canal 20 y escribe por el canal 30. Así pues, el proceso padre, además de crear este hijo adicional, ha de conseguir que éste lea de la pipe sin nombre y escriba a una nueva pipe con nombre, "MIPIPE", que se ha de crear desde el código fuente. 
+
+    Por último, el proceso padre ha de liberar los PCBs de todos sus hijos, a medida que finalicen, antes de él poder terminar. Para validarlo, el proceso padre muestra un mensaje al final de su ejecución.
+
+    Por otro lado, implementa "prog2" que simplemente mutará para ejecutar "wc -c". De todas formas, puedes omitir la implementación de este programa simplemente ejecutando la línea de comandos "wc -c". En ambos casos, desde la línea de comandos, se ha de redireccionar la pipe con nombre hacia la entrada estándar para que lea de ella cuando se lance a ejecutar.
+
+    Ambos programas, "prog1" y "prog2" (o "wc"), se han de ejecutar en terminales distintas. El resultado de la ejecución debe ser la sumatoria de los caracteres, o bytes, de todos los ficheros que se han pasado como parámetros de entrada a "prog1".
+
+    Ejemplo de ejecución: a partir de un fichero (file.txt) que contenga los caracteres "1234567890" si ejecutamos: "#> ./prog1  file.txt  file.txt"
+
+    en la terminal donde ejecutamos "#>./prog2 < MIPIPE" o bien "#>./wc -c < MIPIPE" aparecerá 20 ya que es la suma de los caracteres de file.txt que se lee dos veces.

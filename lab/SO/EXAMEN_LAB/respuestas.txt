@@ -1,0 +1,10 @@
+PREGUNTA a: 
+
+No es factible, ya que cada proceso hijo tiene su propia tabla de canales, ya que al hacer fork se duplica la tabla de canales
+
+PREGUNTA b:
+mknod("MIPIPE", S_IFIFO|0644, 0);
+i després un open("MIPIPE", O_RDONLY);
+
+
+No me ha dado tiempo de hacer el hijo2, pero el SpawnF lo he hecho a base de un hijo2 que es el mismo que hijo1.
